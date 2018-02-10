@@ -1,0 +1,14 @@
+<zk>
+
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm')@init('ua.sustavov.payment.AuthenticationInit')"
+            validationMessages="@id('vmsgs')">
+        <vbox vflex="1" hflex="1" align="center"
+              pack="center" spacing="20px" >
+            <label value="SUCCESS"/>
+            <button label="return" onClick="@command('returnHome')"/>
+        </vbox>
+
+    </window>
+
+</zk>

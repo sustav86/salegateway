@@ -1,0 +1,140 @@
+<?init class="ua.sustavov.payment.AuthenticationInit"?>
+<zk>
+    <!--<window apply="org.zkoss.bind.BindComposer"-->
+            <!--viewModel="@id('vm')@init('ua.sustavov.payment.MyViewModel')"-->
+            <!--validationMessages="@id('vmsgs')">-->
+        <!--<hlayout>count:-->
+            <!--<label value="@load(vm.count)"/>-->
+        <!--</hlayout>-->
+        <!--<button label="add" onClick="@command('cmd')"/>-->
+    <!--</window>-->
+
+    <window apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('cd') @init('ua.sustavov.payment.MyViewModel')"
+            validationMessages="@id('vmsgs')">
+
+        <grid>
+            <rows>
+                <row>
+                    PAYMENT
+                </row>
+                <row>
+                    response:
+                    <label value="@load(cd.response)"/>
+                </row>
+                <row>
+                    Card number:
+                    <!--<textbox id="cardNumberBox" value="@load(cd.modelCard.cardNumber)-->
+                    <!--@save(cd.modelCard.cardNumber, before='saveOrder')-->
+                    <!--@validator(cd.cardNumberValidator)" constraint="no empty"/>-->
+                    <textbox id="cardNumberBox"
+                             value="@load(cd.modelCard.cardNumber)
+							 @save(cd.modelCard.cardNumber, before='saveOrder')
+							 @validator(cd.maxLengthValidator, length=150)"
+                             constraint="no empty"/>
+
+                    <label id="c1" value="@bind(vmsgs[cardNumberBox])" sclass="red"/>
+
+                </row>
+                <row>
+                    Exp Date (MM/yyyy):
+                    <datebox id="expDateBox"
+                             value="@load(cd.modelCard.expDate)
+						     @save(cd.modelCard.expDate, before='saveOrder')"
+                             format="MM/yyyy"
+                             constraint="no empty"/>
+
+                    <label id="e1" value="@bind(vmsgs[expDateBox])" sclass="red"/>
+
+                </row>
+                <row>
+                    CSC Code:
+                    <textbox id="cscCodeBox"
+                             value="@load(cd.modelCard.cscCode)
+							 @save(cd.modelCard.cscCode, before='saveOrder')
+							 @validator(cd.maxLengthValidator, length=4)"
+                             constraint="no empty"/>
+
+                    <label id="cs1" value="@bind(vmsgs[cscCodeBox])" sclass="red"/>
+
+                </row>
+
+                <row>
+                    Transaction information:
+                </row>
+                <row>
+                    Amount:
+                    <intbox id="amountBox"
+                            value="@load(cd.modelTransaction.amount)
+							@save(cd.modelTransaction.amount, before='saveOrder')
+                            @validator(cd.zeroValidator, length=128)"
+                            constraint="no empty,no negative"/>
+
+                    <label id="a1" value="@bind(vmsgs[amountBox])" sclass="red"/>
+
+                </row>
+                <row>
+                    Holder Name:
+                    <textbox id="holderNameBox"
+                             value="@load(cd.modelTransaction.holderName)
+							 @save(cd.modelTransaction.holderName, before='saveOrder')"
+                             constraint="no empty"/>
+
+                    <label id="h1" value="@bind(vmsgs[holderNameBox])" sclass="red"/>
+
+                </row>
+                <row>
+                    Street:
+                    <textbox id="streetBox"
+                             value="@load(cd.modelTransaction.street)
+							 @save(cd.modelTransaction.street, before='saveOrder')
+							 @validator(cd.maxLengthValidator, length=128)"
+                             constraint="no empty"/>
+
+                    <label id="s1" value="@bind(vmsgs[streetBox])" sclass="red"/>
+
+                </row>
+                <row>
+                    City:
+                    <textbox id="cityBox"
+                             value="@load(cd.modelTransaction.city)
+							 @save(cd.modelTransaction.city, before='saveOrder')
+							 @validator(cd.maxLengthValidator, length=50)"
+                             constraint="no empty"/>
+
+                    <label id="ci1" value="@bind(vmsgs[cityBox])" sclass="red"/>
+
+                </row>
+                <row>
+                    State:
+                    <textbox id="stateBox"
+                             value="@load(cd.modelTransaction.state)
+							 @save(cd.modelTransaction.state, before='saveOrder')
+							 @validator(cd.maxLengthValidator, length=2)"
+                             constraint="no empty"/>
+
+                    <label id="st1" value="@bind(vmsgs[stateBox])" sclass="red"/>
+
+                </row>
+                <row>
+                    ZipCode:
+                    <textbox id="zipCodeBox"
+                             value="@load(cd.modelTransaction.zipCode)
+							 @save(cd.modelTransaction.zipCode, before='saveOrder')
+							 @validator(cd.maxLengthValidator, length=15)"
+                             constraint="no empty"/>
+
+                    <label id="z1" value="@bind(vmsgs[zipCodeBox])" sclass="red"/>
+
+                </row>
+            </rows>
+        </grid>
+
+        <toolbar>
+            <!--<button label="Save" onClick="@command(empty 'vmsgs' ? 'saveOrder' : null)"/>-->
+            <button label="Save" onClick="@command('saveOrder')"/>
+        </toolbar>
+    </window>
+
+
+</zk>
