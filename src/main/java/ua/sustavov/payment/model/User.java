@@ -1,13 +1,16 @@
 package ua.sustavov.payment.model;
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.io.Serializable;
 
 /**
  * Created by SUSTAVOV on 10.02.2018.
  */
+@Data
+@ToString
 public class User implements Serializable {
-
-    //TODO lombok
 
     private String account;
     private String userName;
@@ -25,15 +28,4 @@ public class User implements Serializable {
         this.password = "TestNt62400~";
     }
 
-    public String getAccount() {
-        return account;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 }

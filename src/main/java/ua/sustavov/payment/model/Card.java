@@ -1,5 +1,8 @@
 package ua.sustavov.payment.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -12,16 +15,14 @@ import java.util.Date;
 
 @XmlRootElement
 @Component("modelCard")
+@Data
+@NoArgsConstructor
+@ToString
 public class Card implements Serializable {
-
-    //TODO lombok
 
     private String cardNumber;
     private Date expDate;
     private String cscCode;
-
-    public Card() {
-    }
 
     public Card(String cardNumber, Date expDate, String cscCode) {
         this.cardNumber = cardNumber;
@@ -29,36 +30,4 @@ public class Card implements Serializable {
         this.cscCode = cscCode;
     }
 
-    public String getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-
-    public Date getExpDate() {
-        return expDate;
-    }
-
-    public void setExpDate(Date expDate) {
-        this.expDate = expDate;
-    }
-
-    public String getCscCode() {
-        return cscCode;
-    }
-
-    public void setCscCode(String cscCode) {
-        this.cscCode = cscCode;
-    }
-
-    @Override
-    public String toString() {
-        return "Card{" +
-                "cardNumber='" + cardNumber + '\'' +
-                ", expDate=" + expDate +
-                ", cscCode='" + cscCode + '\'' +
-                '}';
-    }
 }
