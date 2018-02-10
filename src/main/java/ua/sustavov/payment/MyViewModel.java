@@ -13,8 +13,12 @@ import ua.sustavov.payment.service.Transactionality;
 public class MyViewModel {
 
     private String response;
-    private Card modelCard = new Card();
-    private Transaction modelTransaction = new Transaction();
+
+    @WireVariable
+    private Card modelCard;
+
+    @WireVariable
+    private Transaction modelTransaction;
 
     @WireVariable
     private Transactionality transaction;

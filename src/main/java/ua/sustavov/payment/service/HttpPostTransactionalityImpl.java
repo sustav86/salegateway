@@ -13,7 +13,7 @@ import java.net.URL;
  * Created by SUSTAVOV on 10.02.2018.
  */
 
-@Service("transaction")
+//@Service("transaction")
 public class HttpPostTransactionalityImpl implements Transactionality {
 
     private static String BASE_URL = "https://sandbox-secure.unitedthinkers.com/gates/xurl?";
