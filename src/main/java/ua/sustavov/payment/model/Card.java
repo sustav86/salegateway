@@ -1,11 +1,18 @@
 package ua.sustavov.payment.model;
 
+import org.springframework.stereotype.Component;
+
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by SUSTAVOV on 07.02.2018.
  */
-public class Card {
+
+@XmlRootElement
+@Component("modelCard")
+public class Card implements Serializable {
 
     //TODO lombok
 
