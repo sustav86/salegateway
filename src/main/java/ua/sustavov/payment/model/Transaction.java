@@ -1,5 +1,7 @@
 package ua.sustavov.payment.model;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.Sessions;
 import ua.sustavov.payment.enums.AccountType;
@@ -7,13 +9,15 @@ import ua.sustavov.payment.enums.RequestType;
 import ua.sustavov.payment.enums.TransactionIndustryType;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 /**
  * Created by SUSTAVOV on 07.02.2018.
  */
 
 @XmlRootElement
-public class Transaction {
+@Component("modelTransaction")
+public class Transaction implements Serializable {
 
     //TODO lombok
 
@@ -33,6 +37,14 @@ public class Transaction {
     private String customerAccountCode;
 
     public Transaction() {
+        this.accountId = "829001";
+        this.transactionIndustryType = TransactionIndustryType.RE;
+        this.transactionCode = "0000000001";
+        this.accountType = AccountType.R;
+        this.accountNumber = "4111111111111111";
+        this.accountAccessory = "0333";
+        this.customerAccountCode = "0000000001";
+        this.requestType = RequestType.SALE;
     }
 
     public Transaction(int amount, String holderName, String street, String city, String state, String zipCode) {
@@ -42,14 +54,6 @@ public class Transaction {
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
-        this.requestType = RequestType.SALE;
-        this.accountId = "829001";
-        this.transactionIndustryType = TransactionIndustryType.RE;
-        this.transactionCode = "0000000001";
-        this.accountType = AccountType.R;
-        this.accountNumber = "4111111111111111";
-        this.accountAccessory = "0333";
-        this.customerAccountCode = "0000000001";
     }
 
     public int getAmount() {
@@ -98,6 +102,38 @@ public class Transaction {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public RequestType getRequestType() {
+        return requestType;
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public TransactionIndustryType getTransactionIndustryType() {
+        return transactionIndustryType;
+    }
+
+    public String getTransactionCode() {
+        return transactionCode;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getAccountAccessory() {
+        return accountAccessory;
+    }
+
+    public String getCustomerAccountCode() {
+        return customerAccountCode;
     }
 
     @Override
