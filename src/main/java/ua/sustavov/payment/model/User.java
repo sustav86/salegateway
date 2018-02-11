@@ -28,15 +28,4 @@ public class User implements Serializable {
         this.password = "TestNt62400~";
     }
 
-//    public String getAccount() {
-//        return account;
-//    }
-//
-//    public String getUserName() {
-//        return userName;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
 }
